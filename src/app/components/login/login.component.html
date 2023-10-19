@@ -3,16 +3,32 @@
     <img src="/assets/signin.png" alt="" />
   </div>
   <div class="main_signup">
-    <div class="main_signup_title">Sign In</div>
+    <img class="main_signup_image1" src="/assets/signin3.png" alt="" />
+    <img class="main_signup_image2" src="/assets/signin4.png" alt="" />
+    <img class="main_signup_image3" src="/assets/signin5.png" alt="" />
+    <div class="main_signup_title">
+      <img src="/assets/signin2.png" alt="" />
+    </div>
     <div class="main_signup_info">
       Enter details bellow to access to your account
     </div>
     <div class="main_signup_username">
-      <input type="text" />
+      <input
+        [(ngModel)]="username"
+        placeholder="Enter your username"
+        autocomplete="off"
+        type="text"
+      />
     </div>
     <div class="main_signup_password">
-      <input type="password" name="" id="" />
+      <input
+        [(ngModel)]="password"
+        placeholder="Enter your password"
+        type="password"
+        name=""
+        id=""
+      />
     </div>
-    <div class="main_signup_button">Sign In</div>
+    <div class="main_signup_button" (click)="login()">Sign In</div>
   </div>
 </div>
