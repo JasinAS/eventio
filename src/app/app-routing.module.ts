@@ -6,14 +6,9 @@ import { AuthGuardService } from './guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-        canLoad: [AuthGuardService],
-      },
-    ],
+    path: 'login',
+    component: LoginComponent,
+    canLoad: [AuthGuardService],
   },
   {
     path: '',
@@ -23,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: '**',
+    pathMatch: 'full',
     redirectTo: 'dashboard',
   },
 ];
