@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   username = '';
   password = '';
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private api: ApiService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -21,24 +26,24 @@ export class LoginComponent implements OnInit {
       password: this.password,
     });
 
-    this.http
-      .post('https://ac08-77-77-216-64.ngrok-free.app/api/owner-login', {
-        email: this.username,
-        password: this.password,
-      })
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          const token = localStorage.setItem(AuthService.ACCESS_TOKEN, res);
-          this.router.navigate(['/dashboard']);
-        },
-        (err: any) => {
-          const token = localStorage.setItem(
-            AuthService.ACCESS_TOKEN,
-            'testToken'
-          );
-          this.router.navigate(['/dashboard']);
-        }
-      );
+    let request = {
+      email: this.username,
+      password: this.password,
+    };
+
+    this.api.login(request).subscribe(
+      (res: any) => {
+        console.log(res);
+        const token = localStorage.setItem(AuthService.ACCESS_TOKEN, res);
+        this.router.navigate(['/dashboard']);
+      },
+      (err: any) => {
+        const token = localStorage.setItem(
+          AuthService.ACCESS_TOKEN,
+          'testToken'
+        );
+        this.router.navigate(['/dashboard']);
+      }
+    );
   }
 }
