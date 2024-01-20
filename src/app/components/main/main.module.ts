@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { RouterModule } from '@angular/router';
 import { LocationsComponent } from './components/locations/locations.component';
+import { AuthGuardService } from 'src/app/guards/auth.guard';
 
 const routes = [
   {
-    path: 'locations',
+    path: 'dashboard',
     component: LocationsComponent,
+    canLoad: [AuthGuardService],
   },
 ];
 

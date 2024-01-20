@@ -1,1 +1,55 @@
-<p>locations works!</p>
+<div class="main">
+  <div class="main_sidebar">
+    <div class="main_sidebar_title">Eventio</div>
+    <div class="main_sidebar_menu">
+      <span class="main_sidebar_menu_name">MENU</span>
+      <span
+        [ngClass]="{ main_sidebar_menu_itemActive: true }"
+        class="main_sidebar_menu_item"
+      >
+        <i class="pi pi-map-marker"></i>
+        MY LOCATIONS</span
+      >
+      <span class="main_sidebar_menu_item">
+        <i class="pi pi-users"></i>
+        EVENTS
+      </span>
+      <span class="main_sidebar_menu_item">
+        <i class="pi pi-user-edit"></i>
+        MY PROFILE
+      </span>
+      <span class="main_sidebar_menu_item">
+        <i class="pi pi-cog"></i>
+        SETTINGS
+      </span>
+    </div>
+  </div>
+  <div class="main_content">
+    <div class="main_content_title">My Locations</div>
+    <div class="main_content_data">
+      <div class="main_content_data_box" *ngFor="let l of locations">
+        <img [src]="l.image" alt="" />
+        <div class="main_content_data_box_info">
+          <div class="main_content_data_box_info_top">
+            <span class="main_content_data_box_info_top_name">
+              {{ l.name }}
+            </span>
+            <span class="main_content_data_box_info_top_address">
+              <i class="pi pi-map-marker"></i> {{ l.address }}
+            </span>
+            <span class="main_content_data_box_info_top_hours">
+              <i class="pi pi-clock"></i> Working Hours: {{ l.hoursStart }}
+              {{ l.hoursEnd }}
+            </span>
+            <span class="main_content_data_box_info_top_web">
+              <i class="pi pi-globe"></i> {{ l.website }}
+            </span>
+          </div>
+          <div class="main_content_data_box_info_bottom">
+            {{ l.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
