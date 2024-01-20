@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  public static readonly ACCESS_TOKEN = 'accessToken';
+  public static readonly ACCESS_TOKEN = 'token';
   constructor() {}
 
   get hasPermission(): Observable<boolean> {

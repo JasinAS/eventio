@@ -7,10 +7,10 @@ import { AuthGuardService } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
     children: [
       {
         path: 'login',
+        component: LoginComponent,
         canLoad: [AuthGuardService],
       },
     ],
@@ -30,5 +30,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuardService]
 })
 export class AppRoutingModule {}
